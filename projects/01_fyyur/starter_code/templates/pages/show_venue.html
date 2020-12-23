@@ -73,7 +73,28 @@
 		</div>
 		{% endfor %}
 	</div>
+	<button class="delete-button" data-id="{{ venue.id }}">Delete</button>
+	<button class="edit-button" data-id="{{ venue.id }}">Edit</button>
 </section>
+<script>
+	const deleteBtns = document.querySelector('.delete-button');
+	  deleteBtns.onclick = function(e) {
+		const venueId = e.target.dataset['id'];
+		fetch('/venues/' + venueId, {
+		  method: 'DELETE'
+		})
+		.then(function() {
+		  window.location = "/";
+		});
+	}
+	const editBtns = document.querySelector('.edit-button');
+
+	  editBtns.onclick = function(e) {
+		const venueId = e.target.dataset['id'];
+		window.location="/venues/" + venueId +"/edit"
+	}
+	
+</script>
 
 {% endblock %}
 
