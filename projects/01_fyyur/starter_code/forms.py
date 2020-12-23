@@ -232,7 +232,7 @@ class ArtistForm(Form):
     )
 
 
-    seeking_venue  =BooleanField(
+    seeking_venue  = BooleanField(
         'seeking_venue'
     )
     seeking_description  = StringField(
