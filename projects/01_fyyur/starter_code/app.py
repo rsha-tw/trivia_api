@@ -85,12 +85,15 @@ class Show(db.Model):
 #----------------------------------------------------------------------------#
 
 def format_datetime(value, format='medium'):
-  date = dateutil.parser.parse(value)
-  if format == 'full':
-      format="EEEE MMMM, d, y 'at' h:mma"
-  elif format == 'medium':
-      format="EE MM, dd, y h:mma"
-  return babel.dates.format_datetime(date, format)
+      if isinstance(value, str):
+            date = dateutil.parser.parse(value)
+      else:
+            date = value
+      if format == 'full':
+            format="EEEE MMMM, d, y 'at' h:mma"
+      elif format == 'medium':
+            format="EE MM, dd, y h:mma"
+      return babel.dates.format_datetime(date, format)
 
 app.jinja_env.filters['datetime'] = format_datetime
 
@@ -449,11 +452,12 @@ def create_artist_submission():
 
 @app.route('/shows')
 def shows():
+      data = Show.query.all()
+      return render_template('pages/shows.html', shows= data)
   # displays list of shows at /shows
   # TODO: replace with real venues data.
   # num_shows should be aggregated based on number of upcoming shows per venue.
-  data = Artist.query.all()
-  return render_template('pages/shows.html', shows=data)
+  
 
 @app.route('/shows/create')
 def create_shows():
