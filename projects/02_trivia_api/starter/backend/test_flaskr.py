@@ -64,21 +64,21 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['message'], "method not allowed")
     
 
-    def test_delete_question(self):
-        res = self.client().delete('/questions/33')
+    def test_200_delete_question(self):
+        res = self.client().delete(f'/questions/10')
         data = json.loads(res.data)
-    
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(data['success'], True)
-        self.assertTrue(data['deleted'])
 
-    def test_404_question_does_not_exist(self):
-        res = self.client().delete('/questions/77')
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(data['success'])
+        self.assertEqual(data['deleted'],10)
+
+    def test_404_delete_question(self):
+        res = self.client().delete('/questions/100')
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 422)
-        self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], "unprocessable")
+        self.assertFalse(data['success'])
     
        
     def test_create_new_questions(self):

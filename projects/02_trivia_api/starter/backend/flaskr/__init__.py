@@ -170,7 +170,8 @@ def create_app(test_config=None):
 
         question = random.choice(questions).format()
 
-        if question['id'] in previous_question:
+        while (question['id'] in previous_question) and (
+                len(previous_question) != len(questions)):
             question = random.choice(questions).format()
 
         if len(previous_question) == len(questions):
@@ -211,6 +212,6 @@ def create_app(test_config=None):
             "success": False,
             "error": 405,
             "message": "method not allowed"
-        }), 405    
+        }), 405
 
     return app
