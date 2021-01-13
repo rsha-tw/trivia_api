@@ -188,7 +188,7 @@ Authentication: No Authentication Needed.
       - Deletes a question by id using url parameters.
       - Returns id of deleted question upon success.
 Sample: curl -X DELETE localhost:5000/questions/19
- { "deleted": "19", "success": true , "total_questions": 21}
+{ "deleted": "19", "success": true , "total_questions": 21}
 
  #### POST /questions
   - General:
