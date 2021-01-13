@@ -88,7 +88,7 @@ Authentication: No Authentication Needed.
 }
 ```
 
-#### GET/questions
+ #### GET/questions
    
   - General:
        - Returns a list questions.
@@ -183,21 +183,21 @@ Authentication: No Authentication Needed.
 }
     ```
 
-#### DELETE/questions/<int:question_id> 
+ #### DELETE/questions/<int:question_id> 
   - General:
       - Deletes a question by id using url parameters.
       - Returns id of deleted question upon success.
 Sample: curl -X DELETE localhost:5000/questions/19
  { "deleted": "19", "success": true , "total_questions": 21}
 
-#### POST /questions
+ #### POST /questions
   - General:
       - Creates a new question using JSON request parameters.
       - Returns JSON object with newly created question id.
   - Sample: curl -X POST localhost:5000/questions -H 'Content-Type: application/json' -d '{"question":"What is the dev name?","answer":"Mohammad","category":4,"difficulty":5}'
   { "created": 29, "success": true }
 
-#### POST /questions/search
+ #### POST /questions/search
   - General:
 
       - Searches for questions using search term in JSON request parameters.
@@ -266,7 +266,7 @@ shwshiis-MacBook-Pro:~ shwshii$ curl localhost:5000/categories/2/questions
 }
     ```
 
-#### POST /quizzes
+ #### POST /quizzes
    - General:
      - Allows users to play the quiz game.
      - Uses JSON request parameters of category and previous questions.
@@ -286,7 +286,8 @@ shwshiis-MacBook-Pro:~ shwshii$ curl localhost:5000/categories/2/questions
 }  
  ```
 
-### Error Handling
+ ### Error Handling 
+
 Errors are returned as JSON in the following format:
 ```
 {
@@ -294,11 +295,11 @@ Errors are returned as JSON in the following format:
     "error": 404,
     "message": "resource not found"
  }
-```
+   ```
 
 The API will return three types of errors:
 
-- 400 – bad request
-- 404 – resource not found
-- 422 – unprocessable
-- 405 - method not allowed
+- 400: bad request
+- 404: resource not found
+- 422: unprocessable
+- 405: method not allowed
