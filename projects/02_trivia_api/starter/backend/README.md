@@ -181,7 +181,7 @@ Authentication: No Authentication Needed.
   "success": true, 
   "total_questions": 22
 }
-    ```
+```
 
  #### DELETE/questions/<int:question_id> 
   - General:
@@ -203,7 +203,7 @@ Sample: curl -X DELETE localhost:5000/questions/19
       - Searches for questions using search term in JSON request parameters.
       - Returns JSON object with matching questions.
   - Sample:  curl -X POST localhost:5000/questions/search -H "Content-Type: application/json" -d '{"search": "Who invented"}'
-  ,,,
+```
   {
   "questions": [
     {
@@ -216,14 +216,14 @@ Sample: curl -X DELETE localhost:5000/questions/19
   ], 
   "success": true
 }
-  ```
+```
 
 #### GET /categories/<category_id>/questions
   - General:
      - Gets questions by category id using url parameters.
      - Returns JSON object with paginated matching questions.
   - Sample: curl localhost:5000/categories/2/questions
-  ```
+```
   {
   "questions": [
     {
@@ -264,7 +264,7 @@ shwshiis-MacBook-Pro:~ shwshii$ curl localhost:5000/categories/2/questions
   "success": true, 
   "total_questions": 3
 }
-    ```
+ ```
 
  #### POST /quizzes
    - General:
@@ -273,7 +273,7 @@ shwshiis-MacBook-Pro:~ shwshii$ curl localhost:5000/categories/2/questions
      - Returns JSON object with random question not among previous questions.
 
   - Sample: curl -X POST localhost:5000/quizzes -H "Content-Type: application/json" -d '{"previous_questions": [1, 2],"quiz_category": {"type": "click", "id": 0}}'
-```
+ ```
   {
   "question": {
     "answer": "Uruguay", 
@@ -283,19 +283,19 @@ shwshiis-MacBook-Pro:~ shwshii$ curl localhost:5000/categories/2/questions
     "question": "Which country won the first ever soccer World Cup in 1930?"
   }, 
   "success": true
-}  
+  }  
  ```
 
  ### Error Handling 
 
 Errors are returned as JSON in the following format:
-```
+ ```
 {
     "success": False,
     "error": 404,
     "message": "resource not found"
  }
-   ```
+ ```
 
 The API will return three types of errors:
 
